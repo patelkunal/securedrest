@@ -1,0 +1,88 @@
+task info {
+    doLast {
+        println "========================================================="
+        println "\t project.group = $project.group"
+        println "\t project.name = $project.name"
+        println "\t project.version = $project.version"
+        println "========================================================="
+    }
+}
+
+allprojects {
+    group = "org.coderkitchen"
+    version = "0.1.SNAPSHOT"
+
+    ext {
+        springBootVersion = "1.4.3.RELEASE"
+    }
+}
+
+subprojects {
+    task info {
+        doLast {
+            println "========================================================="
+            println "\t project.group = $project.group"
+            println "\t project.name = $project.name"
+            println "\t project.parent = $project.parent.name"
+            println "\t project.version = $project.version"
+            println "========================================================="
+        }
+    }
+}
+
+configure(project(":core")) {
+    apply plugin: 'java'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        compile 'org.slf4j:jcl-over-slf4j:1.7.21'
+        compile 'ch.qos.logback:logback-classic:1.1.7'
+        testCompile 'junit:junit:4.12'
+    }
+}
+
+
+configure([project(":jwtsecurity"), project(":service")]) {
+    buildscript {
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+        }
+        repositories {
+            mavenCentral()
+        }
+    }
+
+    apply plugin: 'java'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        compile project(":core")
+    }
+}
+
+configure(project(":web")) {
+    buildscript {
+        repositories {
+            maven {
+                url "https://plugins.gradle.org/m2/"
+            }
+        }
+        dependencies {
+            classpath "com.eriwen:gradle-js-plugin:2.14.1"
+        }
+    }
+}

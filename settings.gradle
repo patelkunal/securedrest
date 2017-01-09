@@ -1,0 +1,6 @@
+rootProject.name = 'securedrest'
+
+include 'core'
+include 'jwtsecurity'
+include 'service'
+include 'web'
