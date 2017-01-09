@@ -1,6 +1,6 @@
-package org.coderkitchen.securedrest.service;
+package org.coderearth.securedrest.jwtsecurity.service;
 
-import org.coderkitchen.securedrest.model.request.LoginCredential;
+import org.coderearth.securedrest.jwtsecurity.model.request.LoginCredential;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

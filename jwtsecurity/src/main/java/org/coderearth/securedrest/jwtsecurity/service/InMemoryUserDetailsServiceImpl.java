@@ -1,4 +1,4 @@
-package org.coderkitchen.securedrest.service;
+package org.coderearth.securedrest.jwtsecurity.service;
 
 import com.google.common.collect.Lists;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

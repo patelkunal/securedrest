@@ -1,4 +1,4 @@
-package org.coderkitchen.securedrest.common;
+package org.coderearth.securedrest.jwtsecurity.common;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;

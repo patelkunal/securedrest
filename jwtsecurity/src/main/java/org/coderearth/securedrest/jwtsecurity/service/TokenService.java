@@ -1,6 +1,6 @@
-package org.coderkitchen.securedrest.service;
+package org.coderearth.securedrest.jwtsecurity.service;
 
-import org.coderkitchen.securedrest.security.TokenUtils;
+import org.coderearth.securedrest.jwtsecurity.security.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

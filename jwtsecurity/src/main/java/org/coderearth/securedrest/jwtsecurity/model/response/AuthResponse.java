@@ -1,4 +1,4 @@
-package org.coderkitchen.securedrest.model.response;
+package org.coderearth.securedrest.jwtsecurity.model.response;
 
 /**
  * Created by kunal_patel on 1/6/17.

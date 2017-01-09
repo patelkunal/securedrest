@@ -1,9 +1,10 @@
-package org.coderkitchen.securedrest.config;
+package org.coderearth.securedrest.jwtsecurity.config;
 
-import org.coderkitchen.securedrest.security.AuthenticationTokenFilter;
-import org.coderkitchen.securedrest.security.JwtAuthenticationEntryPoint;
+import org.coderearth.securedrest.jwtsecurity.security.AuthenticationTokenFilter;
+import org.coderearth.securedrest.jwtsecurity.security.JwtAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -17,6 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * Created by kunal_patel on 12/30/16.
  */
 @EnableWebSecurity
+@ComponentScan("org.coderearth.securedrest.jwtsecurity")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

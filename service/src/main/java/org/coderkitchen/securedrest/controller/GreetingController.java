@@ -1,7 +1,7 @@
 package org.coderkitchen.securedrest.controller;
 
 import com.google.common.collect.ImmutableBiMap;
-import org.coderkitchen.securedrest.common.CommonAuthServices;
+import org.coderearth.securedrest.jwtsecurity.common.CommonAuthServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

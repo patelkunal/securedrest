@@ -1,0 +1,9 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-security') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    compile('org.apache.tomcat.embed:tomcat-embed-core:8.5.6')
+    compile 'io.jsonwebtoken:jjwt:0.7.0'
+}

@@ -1,9 +1,9 @@
-package org.coderkitchen.securedrest.controller;
+package org.coderearth.securedrest.jwtsecurity.controller;
 
-import org.coderkitchen.securedrest.model.request.LoginCredential;
-import org.coderkitchen.securedrest.model.response.AuthResponse;
-import org.coderkitchen.securedrest.service.LoginService;
-import org.coderkitchen.securedrest.service.TokenService;
+import org.coderearth.securedrest.jwtsecurity.model.request.LoginCredential;
+import org.coderearth.securedrest.jwtsecurity.model.response.AuthResponse;
+import org.coderearth.securedrest.jwtsecurity.service.LoginService;
+import org.coderearth.securedrest.jwtsecurity.service.TokenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

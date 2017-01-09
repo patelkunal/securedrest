@@ -1,4 +1,4 @@
-package org.coderkitchen.securedrest.model.request;
+package org.coderearth.securedrest.jwtsecurity.model.request;
 
 import com.google.common.base.MoreObjects;
 

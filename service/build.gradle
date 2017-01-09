@@ -1,14 +1,12 @@
 apply plugin: 'org.springframework.boot'
 
 dependencies {
+
+    compile project(':jwtsecurity')
+
     // spring libs
-    compile('org.springframework.boot:spring-boot-starter-security') {
-        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-    }
     compile('org.springframework.boot:spring-boot-starter-web') {
         exclude group: 'org.hibernate', module: 'hibernate-validator'
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
-
-    compile 'io.jsonwebtoken:jjwt:0.7.0'
 }

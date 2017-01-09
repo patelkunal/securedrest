@@ -1,4 +1,4 @@
-package org.coderkitchen.securedrest.security;
+package org.coderearth.securedrest.jwtsecurity.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,4 +1,4 @@
-package org.coderkitchen.securedrest.security;
+package org.coderearth.securedrest.jwtsecurity.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
