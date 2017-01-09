@@ -42,8 +42,7 @@ configure(project(":core")) {
     }
 
     dependencies {
-        compile 'org.slf4j:jcl-over-slf4j:1.7.21'
-        compile 'ch.qos.logback:logback-classic:1.1.7'
+        compile("org.springframework.boot:spring-boot-starter-logging:$springBootVersion")
         testCompile 'junit:junit:4.12'
     }
 }
