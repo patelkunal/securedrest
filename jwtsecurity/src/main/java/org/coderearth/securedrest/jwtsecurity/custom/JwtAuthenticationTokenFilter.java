@@ -1,5 +1,6 @@
-package org.coderearth.securedrest.jwtsecurity.security;
+package org.coderearth.securedrest.jwtsecurity.custom;
 
+import org.coderearth.securedrest.jwtsecurity.common.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,7 +21,7 @@ import java.io.IOException;
  * Created by kunal_patel on 12/30/16.
  */
 @Component
-public class AuthenticationTokenFilter extends OncePerRequestFilter {
+public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Value("${app.token.header}")
     private String tokenHeader;
@@ -33,18 +34,19 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(final HttpServletRequest request, final HttpServletResponse response, final FilterChain filterChain) throws ServletException, IOException {
-        String authToken = request.getHeader(this.tokenHeader);
-        String username = this.tokenUtils.getUsernameFromToken(authToken);
+        final String authToken = request.getHeader(this.tokenHeader);
+        if (authToken != null) {
+            String username = this.tokenUtils.getUsernameFromToken(authToken);
 
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-            if (this.tokenUtils.validateToken(authToken, userDetails)) {
-                PreAuthenticatedAuthenticationToken authentication = new PreAuthenticatedAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authentication);
+            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                final UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+                if (this.tokenUtils.validateToken(authToken, username)) {
+                    PreAuthenticatedAuthenticationToken authentication = new PreAuthenticatedAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                }
             }
         }
-
         filterChain.doFilter(request, response);
     }
 

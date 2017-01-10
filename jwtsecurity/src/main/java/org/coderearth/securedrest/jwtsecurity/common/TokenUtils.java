@@ -1,4 +1,4 @@
-package org.coderearth.securedrest.jwtsecurity.security;
+package org.coderearth.securedrest.jwtsecurity.common;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -37,7 +37,7 @@ public class TokenUtils {
         return username;
     }
 
-    public Date getCreatedDateFromToken(String token) {
+    private Date getCreatedDateFromToken(String token) {
         Date created;
         try {
             final Claims claims = this.getClaimsFromToken(token);
@@ -48,7 +48,7 @@ public class TokenUtils {
         return created;
     }
 
-    public Date getExpirationDateFromToken(String token) {
+    private Date getExpirationDateFromToken(String token) {
         Date expiration;
         try {
             final Claims claims = this.getClaimsFromToken(token);
@@ -57,17 +57,6 @@ public class TokenUtils {
             expiration = null;
         }
         return expiration;
-    }
-
-    public String getAudienceFromToken(String token) {
-        String audience;
-        try {
-            final Claims claims = this.getClaimsFromToken(token);
-            audience = (String) claims.get("audience");
-        } catch (Exception e) {
-            audience = null;
-        }
-        return audience;
     }
 
     private Claims getClaimsFromToken(String token) {
@@ -133,6 +122,11 @@ public class TokenUtils {
     public Boolean validateToken(String token, UserDetails user) {
         final String username = this.getUsernameFromToken(token);
         return (username.equals(user.getUsername()) && !(this.isTokenExpired(token)));
+    }
+
+    public Boolean validateToken(final String token, final String aUsername) {
+        final String username = this.getUsernameFromToken(token);
+        return (username.equals(aUsername) && !(this.isTokenExpired(token)));
     }
 
 

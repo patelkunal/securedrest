@@ -1,7 +1,6 @@
 apply plugin: 'org.springframework.boot'
 
 dependencies {
-
     compile project(':jwtsecurity')
 
     // spring libs

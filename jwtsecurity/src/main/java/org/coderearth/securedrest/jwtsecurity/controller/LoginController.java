@@ -1,9 +1,9 @@
 package org.coderearth.securedrest.jwtsecurity.controller;
 
+import org.coderearth.securedrest.jwtsecurity.common.TokenUtils;
 import org.coderearth.securedrest.jwtsecurity.model.request.LoginCredential;
 import org.coderearth.securedrest.jwtsecurity.model.response.AuthResponse;
 import org.coderearth.securedrest.jwtsecurity.service.LoginService;
-import org.coderearth.securedrest.jwtsecurity.service.TokenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class LoginController {
     private LoginService loginService;
 
     @Autowired
-    private TokenService tokenService;
+    private TokenUtils tokenUtils;
 
     @Autowired
     private AuthenticationManager manager;
@@ -42,7 +42,7 @@ public class LoginController {
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String validUserName = loginService.isValidUser(credential);
-        String token = tokenService.createToken(validUserName);
+        String token = tokenUtils.generateToken(validUserName);
         LOGGER.debug("token generated for username = {}", credential.getUsername());
         return ResponseEntity.ok(new AuthResponse(token));
     }

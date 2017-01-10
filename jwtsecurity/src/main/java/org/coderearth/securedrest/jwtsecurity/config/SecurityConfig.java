@@ -1,7 +1,6 @@
 package org.coderearth.securedrest.jwtsecurity.config;
 
-import org.coderearth.securedrest.jwtsecurity.security.AuthenticationTokenFilter;
-import org.coderearth.securedrest.jwtsecurity.security.JwtAuthenticationEntryPoint;
+import org.coderearth.securedrest.jwtsecurity.custom.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
 
     @Autowired
-    private AuthenticationTokenFilter tokenFilter;
+    private JwtAuthenticationTokenFilter tokenFilter;
 
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
@@ -56,6 +56,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     protected AuthenticationEntryPoint authEntryPoint() {
-        return new JwtAuthenticationEntryPoint();
+        return new Http403ForbiddenEntryPoint();
     }
 }

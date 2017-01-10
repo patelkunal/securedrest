@@ -1,4 +1,4 @@
-package org.coderearth.securedrest.jwtsecurity.service;
+package org.coderearth.securedrest.jwtsecurity.custom.userdetails;
 
 import com.google.common.collect.Lists;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
