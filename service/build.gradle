@@ -7,5 +7,10 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web') {
         exclude group: 'org.hibernate', module: 'hibernate-validator'
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty") {
+        exclude group: "org.eclipse.jetty.websocket", module: "websocket-server"
+        exclude group: "org.eclipse.jetty.websocket", module: "javax-websocket-server-impl"
     }
 }
