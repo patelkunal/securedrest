@@ -1,9 +1,12 @@
 package org.coderearth.securedrest.jwtsecurity.config;
 
+import org.coderearth.securedrest.core.config.CoreConfig;
 import org.coderearth.securedrest.jwtsecurity.custom.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,9 +22,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  */
 @EnableWebSecurity
 @ComponentScan("org.coderearth.securedrest.jwtsecurity")
+@Import(CoreConfig.class)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    @Qualifier("currentUserDetailsServiceImpl")
     private UserDetailsService userDetailsService;
 
     @Autowired

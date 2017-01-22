@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by kunal_patel on 12/30/16.
  */
-@Component
+@Component("inMemoryUserDetailsServiceImpl")
 public class InMemoryUserDetailsServiceImpl implements UserDetailsService {
 
     private final UserDetailsManager userDetailsManager;

@@ -12,11 +12,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
 
+    private final UserDetailsService userDetailsService;
+
     @Autowired
-    private UserDetailsService service;
+    public LoginService(final UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     public String isValidUser(final LoginCredential credential) {
-        UserDetails userDetails = service.loadUserByUsername(credential.getUsername());
+        UserDetails userDetails = userDetailsService.loadUserByUsername(credential.getUsername());
         return userDetails != null ? userDetails.getUsername() : null;
     }
 }
